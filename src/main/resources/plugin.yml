@@ -1,0 +1,8 @@
+name: Clubmine-Trial
+version: '${version}'
+main: com.beauver.clubminetrial.Clubmine_Trial
+api-version: '1.20'
+prefix: com.beauver.trial-clubmine
+authors: [ Beauver ]
+description: Trial plugin for clubmine
+website: beauver.com
