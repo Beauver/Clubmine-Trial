@@ -1,5 +1,6 @@
 package com.beauver.clubminetrial;
 
+import com.beauver.clubminetrial.listeners.SurvivalInventoryListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -16,6 +17,10 @@ public final class Clubmine_Trial extends JavaPlugin {
         plugin = this;
 
         getLogger().info("Started Clubmine-Trial plugin.");
+    }
+
+    private void registerListeners(){
+        getServer().getPluginManager().registerEvents(new SurvivalInventoryListener(), this);
     }
     @Override
     public void onDisable() {
