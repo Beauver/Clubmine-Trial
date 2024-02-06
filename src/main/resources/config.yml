@@ -1,0 +1,3 @@
+discordInviteCode: "placeholder" # Discord invite link
+discordInviteTextColorHex: "#3544e6" #Replace with whatever HEX Color code you wish
+craftingSlotsCustomModelId: 1 #This must be the customModelId of the survival inventory crafting slots, if this is set incorrectly, players will be able to grab the items.
