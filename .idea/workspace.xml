@@ -5,18 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d733d825-7790-43d6-ab83-5e4c58dd31f5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Util/InventoryClose.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Util/InventoryItems.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/Clubmine-Trial.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/GUI/PlayerStatsGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/GUI/SocialGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/GUI/StaffGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/DiscordItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/StoreItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/TwitterItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/YouTubeItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/Clubmine-Trial.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/Clubmine-Trial.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Clubmine_Trial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Clubmine_Trial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Util/InventoryClose.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/listeners/InventoryClose.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Util/InventoryItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Util/InventoryItems.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/listeners/SurvivalInventoryListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/listeners/SurvivalInventoryListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,10 +86,36 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.Clubmine-Trial [build]">
+  <component name="RunManager" selected="Gradle.Clubmine-Trial [shadowJar]">
+    <configuration name="Clubmine-Trial [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="assemble" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="Clubmine-Trial [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -95,6 +128,72 @@
         <option name="taskNames">
           <list>
             <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Clubmine-Trial [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Clubmine-Trial [init]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="init" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Clubmine-Trial [shadowJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="shadowJar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -129,7 +228,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Clubmine-Trial [shadowJar]" />
         <item itemvalue="Gradle.Clubmine-Trial [build]" />
+        <item itemvalue="Gradle.Clubmine-Trial [init]" />
+        <item itemvalue="Gradle.Clubmine-Trial [clean]" />
+        <item itemvalue="Gradle.Clubmine-Trial [assemble]" />
       </list>
     </recent_temporary>
   </component>
@@ -148,7 +251,10 @@
       <workItem from="1707219789304" duration="4376000" />
       <workItem from="1707224402642" duration="370000" />
       <workItem from="1707224845205" duration="275000" />
-      <workItem from="1707225133250" duration="1701000" />
+      <workItem from="1707225133250" duration="9865000" />
+      <workItem from="1707245061214" duration="1639000" />
+      <workItem from="1707246707446" duration="2953000" />
+      <workItem from="1707249679862" duration="2223000" />
     </task>
     <servers />
   </component>

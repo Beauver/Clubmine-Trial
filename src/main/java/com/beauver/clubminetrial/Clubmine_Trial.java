@@ -1,15 +1,11 @@
 package com.beauver.clubminetrial;
 
-import com.beauver.clubminetrial.Util.InventoryClose;
+import com.beauver.clubminetrial.listeners.InventoryClose;
 import com.beauver.clubminetrial.Util.InventoryItems;
 import com.beauver.clubminetrial.listeners.SurvivalInventoryListener;
-import com.sun.jdi.request.MethodEntryRequest;
 import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -51,7 +47,7 @@ public final class Clubmine_Trial extends JavaPlugin {
                 for(int i = 0; i <= 4; i++){
 
                     if(i == 1){
-                        player.getOpenInventory().setItem(i, InventoryItems.discordItem());
+                        player.getOpenInventory().setItem(i, InventoryItems.socialItem());
                     }else if(i == 2){
                         player.getOpenInventory().setItem(i, InventoryItems.playerStats(player.getName()));
                     }else if(i == 3){

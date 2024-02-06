@@ -1,4 +1,4 @@
-package com.beauver.clubminetrial.Util;
+package com.beauver.clubminetrial.listeners;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

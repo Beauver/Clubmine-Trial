@@ -3,9 +3,16 @@ package com.beauver.clubminetrial.Util;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Statistic;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import xyz.xenondevs.inventoryaccess.component.ComponentWrapper;
+import xyz.xenondevs.invui.item.ItemProvider;
+import xyz.xenondevs.invui.item.builder.ItemBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InventoryItems {
 
@@ -29,10 +36,10 @@ public class InventoryItems {
         return skullItem;
     }
 
-    public static ItemStack discordItem(){
-        ItemStack item = new ItemStack(Material.LIGHT_BLUE_DYE);
+    public static ItemStack socialItem(){
+        ItemStack item = new ItemStack(Material.LIME_DYE);
         ItemMeta meta = item.getItemMeta();
-        meta.displayName(Component.text("Discord"));
+        meta.displayName(Component.text("Socials"));
         meta.setCustomModelData(1);
         item.setItemMeta(meta);
         return item;
@@ -47,13 +54,22 @@ public class InventoryItems {
         return item;
     }
 
-    public static ItemStack closeGui(){
-        ItemStack item = new ItemStack(Material.BARRIER);
-        ItemMeta meta = item.getItemMeta();
-        meta.displayName(Component.text("Close"));
-        meta.setCustomModelData(1);
-        item.setItemMeta(meta);
-        return item;
+    public static ItemProvider getStatItem(String statName, int statistic, Material material){
+        ItemProvider itemProvider = new ItemBuilder(material)
+
+                .setDisplayName(statName)
+                .addLoreLines("- " + statistic)
+                .setCustomModelData(1);
+        return itemProvider;
+    }
+
+    public static ItemProvider getStatItem(String statName, String statistic, Material material){
+
+        ItemProvider itemProvider = new ItemBuilder(material)
+                .setDisplayName(statName)
+                .addLoreLines("- " + statistic)
+                .setCustomModelData(1);
+        return itemProvider;
     }
 
 }
