@@ -20,6 +20,9 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.CraftingInventory;
 import org.bukkit.inventory.ItemStack;
+import xyz.xenondevs.invui.util.MojangApiUtils;
+
+import java.io.IOException;
 
 public class SurvivalInventoryListener implements Listener {
 
@@ -54,7 +57,13 @@ public class SurvivalInventoryListener implements Listener {
                 PlayerStatsGUI.openPlayerStatsGUI(player);
 
             }else if(item.equals(InventoryItems.staffItem())){
-                StaffGUI.openStaffGUI();
+                try {
+                    StaffGUI.openStaffGUI(player);
+                } catch (MojangApiUtils.MojangApiException e) {
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 event.getInventory().close();
             }
         }

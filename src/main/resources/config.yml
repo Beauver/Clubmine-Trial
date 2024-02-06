@@ -4,3 +4,8 @@ storeLink: "https://store.clubmine.net/" #Link to clubmine's store
 twitterLink: "https://example.com/" #link to clubmine's twitter
 textColorHex: "#3544e6" #Replace with whatever HEX Color code you wish
 craftingSlotsCustomModelId: 1 #This must be the customModelId of the survival inventory crafting slots, if this is set incorrectly, players will be able to grab the items.
+staffMembers:
+  #USERNAME, RANK, HIRED DATE,
+  - "Beauver, Developer, 06-02-2024"
+  - "ReportCards, Developer, 1-01-2024"
+  - "CookieDoughnut2, Team, 1-02-2024"

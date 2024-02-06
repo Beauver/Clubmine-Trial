@@ -1,16 +1,24 @@
 package com.beauver.clubminetrial.Util;
 
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
+import org.bukkit.entity.ItemDisplay;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.w3c.dom.CDATASection;
 import xyz.xenondevs.inventoryaccess.component.ComponentWrapper;
+import xyz.xenondevs.invui.item.Item;
 import xyz.xenondevs.invui.item.ItemProvider;
 import xyz.xenondevs.invui.item.builder.ItemBuilder;
+import xyz.xenondevs.invui.item.builder.SkullBuilder;
+import xyz.xenondevs.invui.item.impl.SimpleItem;
+import xyz.xenondevs.invui.util.MojangApiUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +32,13 @@ public class InventoryItems {
         skullItem.setItemMeta(skullMeta);
         skullMeta.setCustomModelData(1);
         return skullItem;
+    }
+
+    public static Item staffSkull(String playerName, String rank, String dateJoined) throws MojangApiUtils.MojangApiException, IOException {
+        return new SimpleItem(new SkullBuilder(playerName)
+                .setDisplayName(playerName)
+                .addLoreLines("Rank: " + rank)
+                .addLoreLines("Date Hired: " + dateJoined));
     }
 
     public static ItemStack playerStats(String playerName){
