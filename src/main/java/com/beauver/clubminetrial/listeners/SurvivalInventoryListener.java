@@ -1,6 +1,7 @@
 package com.beauver.clubminetrial.listeners;
 
 import com.beauver.clubminetrial.Clubmine_Trial;
+import com.beauver.clubminetrial.GUI.MinesweeperGUI;
 import com.beauver.clubminetrial.GUI.PlayerStatsGUI;
 import com.beauver.clubminetrial.GUI.SocialGUI;
 import com.beauver.clubminetrial.GUI.StaffGUI;
@@ -23,11 +24,13 @@ import org.bukkit.inventory.ItemStack;
 import xyz.xenondevs.invui.util.MojangApiUtils;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SurvivalInventoryListener implements Listener {
 
     @EventHandler
-    public void onInventoryOpen(InventoryClickEvent event) {
+    public void onInventoryOpen(InventoryClickEvent event) throws MojangApiUtils.MojangApiException, IOException {
         ItemStack item = event.getCurrentItem();
         if(item == null){
             return;
@@ -48,23 +51,46 @@ public class SurvivalInventoryListener implements Listener {
 
             if(item.equals(InventoryItems.socialItem())){
                 event.getInventory().close();
-
-                SocialGUI socialGUI = new SocialGUI();
-                socialGUI.openSocials(player);
+                //Running it with a 1 tick delay, sync (inventory must be handled on the main thread) as that should fix a bug. --> Clicked item still being on cursor when clicked
+                Bukkit.getScheduler().runTaskLater(Clubmine_Trial.getPlugin(), new Runnable() {
+                    @Override
+                    public void run() {
+                        SocialGUI socialGUI = new SocialGUI();
+                        socialGUI.openSocials(player);
+                    }
+                }, 1L);
 
             }else if(item.equals(InventoryItems.playerStats(player.getName()))){
                 event.getInventory().close();
-                PlayerStatsGUI.openPlayerStatsGUI(player);
+                //Running it with a 1 tick delay, sync (inventory must be handled on the main thread) as that should fix a bug. --> Clicked item still being on cursor when clicked
+                Bukkit.getScheduler().runTaskLater(Clubmine_Trial.getPlugin(), new Runnable() {
+                    @Override
+                    public void run() {
+                        PlayerStatsGUI.openPlayerStatsGUI(player);
+                    }
+                }, 1L);
 
             }else if(item.equals(InventoryItems.staffItem())){
-                try {
-                    StaffGUI.openStaffGUI(player);
-                } catch (MojangApiUtils.MojangApiException e) {
-                    throw new RuntimeException(e);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
                 event.getInventory().close();
+                //Running it with a 1 tick delay, sync (inventory must be handled on the main thread) as that should fix a bug. --> Clicked item still being on cursor when clicked
+                Bukkit.getScheduler().runTaskLater(Clubmine_Trial.getPlugin(), new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            StaffGUI.openStaffGUI(player);
+                        } catch (MojangApiUtils.MojangApiException | IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }, 1L);
+            }
+            else if(item.equals(InventoryItems.CustomItem())) {
+                event.getInventory().close();
+                //Running it with a 1 tick delay, sync (inventory must be handled on the main thread) as that should fix a bug. --> Clicked item still being on cursor when clicked
+                Bukkit.getScheduler().runTaskLater(Clubmine_Trial.getPlugin(), () -> {
+                    MinesweeperGUI minesweeperGUI = new MinesweeperGUI();
+                    minesweeperGUI.openMinesweeper(player);
+                }, 1L);
             }
         }
     }

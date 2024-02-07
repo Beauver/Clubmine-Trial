@@ -5,13 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d733d825-7790-43d6-ab83-5e4c58dd31f5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/BackItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/ForwardItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/GUI/MinesweeperGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/GUI/MinesweeperLoseGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/GUI/MinesweeperVictoryGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/minesweeper/ActualMine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/minesweeper/AdjecentMine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/minesweeper/GuessedMine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/minesweeper/SafeCell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/minesweeper/UnknownItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/listeners/ItemSpawnEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/GUI/StaffGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/GUI/StaffGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Clubmine_Trial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Clubmine_Trial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Util/InventoryItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Util/InventoryItems.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/listeners/SurvivalInventoryListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/listeners/SurvivalInventoryListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,28 +88,6 @@
   }
 }</component>
   <component name="RunManager" selected="Gradle.Clubmine-Trial [shadowJar]">
-    <configuration name="Clubmine-Trial [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="assemble" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="Clubmine-Trial [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -170,6 +154,28 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="Clubmine-Trial [knows]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="knows" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="Clubmine-Trial [shadowJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -217,10 +223,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Clubmine-Trial [shadowJar]" />
+        <item itemvalue="Gradle.Clubmine-Trial [knows]" />
         <item itemvalue="Gradle.Clubmine-Trial [build]" />
         <item itemvalue="Gradle.Clubmine-Trial [init]" />
         <item itemvalue="Gradle.Clubmine-Trial [clean]" />
-        <item itemvalue="Gradle.Clubmine-Trial [assemble]" />
       </list>
     </recent_temporary>
   </component>
@@ -242,7 +248,8 @@
       <workItem from="1707225133250" duration="9865000" />
       <workItem from="1707245061214" duration="1639000" />
       <workItem from="1707246707446" duration="2953000" />
-      <workItem from="1707249679862" duration="5733000" />
+      <workItem from="1707249679862" duration="5974000" />
+      <workItem from="1707320576923" duration="22762000" />
     </task>
     <servers />
   </component>

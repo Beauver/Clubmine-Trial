@@ -5,6 +5,7 @@ import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.ItemDisplay;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -64,6 +65,15 @@ public class InventoryItems {
         ItemStack item = new ItemStack(Material.OAK_SIGN);
         ItemMeta meta = item.getItemMeta();
         meta.displayName(Component.text("Staff"));
+        meta.setCustomModelData(1);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    public static ItemStack CustomItem(){
+        ItemStack item = new ItemStack(Material.COMPASS);
+        ItemMeta meta = item.getItemMeta();
+        meta.displayName(Component.text("Minesweeper!"));
         meta.setCustomModelData(1);
         item.setItemMeta(meta);
         return item;
