@@ -34,8 +34,8 @@ public class MinesweeperGUI {
     private Window minesweeperWindow;
     private int timeTaken = 0;
     public int timerId;
-    private final int maxMines = 14;
-    private final int minMines = 5;
+    private final int maxMines = Clubmine_Trial.getPlugin().getConfig().getInt("minesweeperMaxMines");
+    private final int minMines = Clubmine_Trial.getPlugin().getConfig().getInt("minesweeperMinMines");;
     private int totalSafeCells;
     private int correctGuesses;
 
@@ -87,7 +87,7 @@ public class MinesweeperGUI {
     }
 
     //randomly places X amount of bombs on the map
-    private void placeBomb(){
+    private void placeBomb(int clickRow, int clickColumn){
         Random random = new Random();
 
         for(int i = 0; i < bombNum; i++){
@@ -196,6 +196,7 @@ public class MinesweeperGUI {
         minesweeperGui.setItem(event.getSlot(), new UnknownItem(this));
         minesGuessed--;
         minesweeperGui.setItem(46, new MinesAmount(bombNum -minesGuessed));
+        checkWin();
     }
 
     private void mineMath(InventoryClickEvent event){
@@ -205,7 +206,7 @@ public class MinesweeperGUI {
 
         if(clickAmount <= 0){
             initBoard();
-            placeBomb();
+            placeBomb(row, column);
         }
         handleCellClicked(row, column);
         clickAmount++;
@@ -224,12 +225,14 @@ public class MinesweeperGUI {
         Bukkit.getScheduler().cancelTask(timerId);
         replaceCells();
         minesweeperWindow.changeTitle("You Won!");
+        minesweeperGui.setItem(46, new SimpleItem(new ItemBuilder(Material.LIME_STAINED_GLASS_PANE).setDisplayName("You won!")));
     }
 
     private  void loseCondition(){
         Bukkit.getScheduler().cancelTask(timerId);
         replaceCells();
         minesweeperWindow.changeTitle("You lost!");
+        minesweeperGui.setItem(46, new SimpleItem(new ItemBuilder(Material.RED_STAINED_GLASS_PANE).setDisplayName("You lost!")));
     }
 
     private void setAsGuessedMine(InventoryClickEvent event){
@@ -265,6 +268,7 @@ public class MinesweeperGUI {
         timeTaken = 0;
         minesGuessed = 0;
         clickAmount = 0;
+        correctGuesses = 0;
         minesweeperGui.closeForAllViewers();
         openMinesweeper(minesweperPlayer);
     }

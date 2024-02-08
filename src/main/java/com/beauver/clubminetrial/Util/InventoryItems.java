@@ -25,16 +25,6 @@ import java.util.List;
 
 public class InventoryItems {
 
-    public static ItemStack playerSkull(String playerName){
-        ItemStack skullItem = new ItemStack(Material.PLAYER_HEAD);
-        SkullMeta skullMeta = (SkullMeta) skullItem.getItemMeta();
-        skullMeta.setOwningPlayer(Bukkit.getOfflinePlayer(playerName));
-        skullMeta.displayName(Component.text(playerName));
-        skullItem.setItemMeta(skullMeta);
-        skullMeta.setCustomModelData(1);
-        return skullItem;
-    }
-
     public static Item staffSkull(String playerName, String rank, String dateJoined) throws MojangApiUtils.MojangApiException, IOException {
         return new SimpleItem(new SkullBuilder(playerName)
                 .setDisplayName(playerName)
