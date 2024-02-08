@@ -11,12 +11,17 @@ import xyz.xenondevs.invui.item.impl.AbstractItem;
 
 public class AdjecentMine extends AbstractItem {
 
-    public static int mineNum;
+    private int mineNum;
+    public AdjecentMine(int mineNum1){
+        this.mineNum = mineNum1;
+    }
+
 
     public ItemProvider getItemProvider() {
         return new ItemBuilder(Material.LIGHT_BLUE_STAINED_GLASS_PANE)
                 .setCustomModelData(1)
-                .setDisplayName(String.valueOf(mineNum));
+                .setDisplayName(String.valueOf(mineNum))
+                .setAmount(mineNum);
     }
 
     @Override

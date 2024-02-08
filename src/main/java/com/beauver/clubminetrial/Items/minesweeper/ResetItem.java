@@ -10,21 +10,22 @@ import xyz.xenondevs.invui.item.ItemProvider;
 import xyz.xenondevs.invui.item.builder.ItemBuilder;
 import xyz.xenondevs.invui.item.impl.AbstractItem;
 
-public class UnknownItem extends AbstractItem {
-    final MinesweeperGUI minesweeperGUI;
-    public UnknownItem(MinesweeperGUI minesweeperGui){
-        this.minesweeperGUI = minesweeperGui;
+public class ResetItem extends AbstractItem {
+
+    MinesweeperGUI minesweeperGUI;
+    public ResetItem(MinesweeperGUI minesweeperGUI1){
+        this.minesweeperGUI = minesweeperGUI1;
     }
+
     @Override
     public ItemProvider getItemProvider() {
-        return new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE)
+        return new ItemBuilder(Material.BARRIER)
                 .setCustomModelData(1)
-                .setDisplayName("?");
+                .setDisplayName("Reset");
     }
 
     @Override
     public void handleClick(@NotNull ClickType clickType, @NotNull Player player, @NotNull InventoryClickEvent event) {
-        minesweeperGUI.clickedUnknownItem(clickType, player, event);
-        notifyWindows();
+        minesweeperGUI.resetGame();
     }
 }

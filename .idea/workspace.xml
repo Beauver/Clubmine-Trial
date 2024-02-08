@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d733d825-7790-43d6-ab83-5e4c58dd31f5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/handlers/MinesweeperHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/minesweeper/MinesAmount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/minesweeper/ResetItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/minesweeper/TimerItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/GUI/MinesweeperGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/GUI/MinesweeperGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/minesweeper/GuessedMine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/minesweeper/GuessedMine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/GUI/MinesweeperLoseGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/GUI/MinesweeperVictoryGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/minesweeper/AdjecentMine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/minesweeper/AdjecentMine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/minesweeper/UnknownItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/Items/minesweeper/UnknownItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/handlers/MinesweeperHandler.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +247,7 @@
       <workItem from="1707246707446" duration="2953000" />
       <workItem from="1707249679862" duration="5974000" />
       <workItem from="1707320576923" duration="22878000" />
-      <workItem from="1707397086729" duration="1495000" />
+      <workItem from="1707397086729" duration="10503000" />
     </task>
     <servers />
   </component>

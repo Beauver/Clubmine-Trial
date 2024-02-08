@@ -2,13 +2,17 @@ package com.beauver.clubminetrial.GUI;
 
 import com.beauver.clubminetrial.Clubmine_Trial;
 import com.beauver.clubminetrial.Items.minesweeper.*;
+import jdk.jshell.spi.ExecutionControl;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import xyz.xenondevs.invui.gui.Gui;
+import xyz.xenondevs.invui.item.Item;
 import xyz.xenondevs.invui.item.builder.ItemBuilder;
 import xyz.xenondevs.invui.item.impl.SimpleItem;
 import xyz.xenondevs.invui.window.Window;
@@ -17,19 +21,31 @@ import java.util.Random;
 
 public class MinesweeperGUI {
 
-    private Gui minesweeperGui;
-    private final int rows = 6;
+    public Gui minesweeperGui;
+    private final int rows = 5;
     private final int columns = 9;
-    private final int bombNum = 6;
+    private int bombNum;
     private int[][] board;
     private boolean[][] revealedBoard;
     private int clickAmount = 0;
     private int minesGuessed = 0;
     private Player minesweperPlayer;
     private InventoryClickEvent invClickEvent;
+    private Window minesweeperWindow;
+    private int timeTaken = 0;
+    public int timerId;
+    private final int maxMines = 14;
+    private final int minMines = 5;
+    private int totalSafeCells;
+    private int correctGuesses;
+
 
     public void openMinesweeper(Player player){
         minesweperPlayer = player;
+        Random rn = new Random();
+        bombNum = rn.nextInt((maxMines - minMines) + 1) + minMines;
+        totalSafeCells = (rows * columns) - bombNum;
+
         //Creates the GuiBuilder for a normal GUI
         minesweeperGui = Gui.normal()
                 .setStructure(
@@ -38,23 +54,24 @@ public class MinesweeperGUI {
                         "? ? ? ? ? ? ? ? ?",
                         "? ? ? ? ? ? ? ? ?",
                         "? ? ? ? ? ? ? ? ?",
-                        "? ? ? ? ? ? ? ? ?")
+                        "# M # # R # # T #")
                 .addIngredient('#', new SimpleItem(new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE)))
                 .addIngredient('?', new UnknownItem(this))
+                .addIngredient('M', new MinesAmount(bombNum))
+                .addIngredient('R', new ResetItem(this))
+                .addIngredient('T', new TimerItem(timeTaken))
                 .build();
 
-        Window window = Window.single()
+        minesweeperWindow = Window.single()
                 .setViewer(player)
                 .setTitle("Minesweeper")
                 .setGui(minesweeperGui)
                 .build();
-        window.open();
+        minesweeperWindow.open();
 
         if(clickAmount <= 0){
             board = new int[rows][columns];
             revealedBoard = new boolean[rows][columns];
-            initBoard();
-            placeBomb();
         }
     }
 
@@ -70,8 +87,9 @@ public class MinesweeperGUI {
     }
 
     //randomly places X amount of bombs on the map
-    private  void placeBomb(){
+    private void placeBomb(){
         Random random = new Random();
+
         for(int i = 0; i < bombNum; i++){
             int row = random.nextInt(rows);
             int column = random.nextInt(columns);
@@ -81,59 +99,69 @@ public class MinesweeperGUI {
                 row = random.nextInt(rows);
                 column = random.nextInt(columns);
             }
-            //place mine (sets the location to -1 defening its a mine)
+            //place mine (sets the location to -1 defining its a mine)
             board[row][column] = -1;
             updateCellToNum(row, column);
         }
     }
 
     //when clicked does:
-    private  void handleCellClicked(int row, int column) {
+    private void handleCellClicked(int row, int column) {
         if (!revealedBoard[row][column]) {
             revealedBoard[row][column] = true;
 
-            //if it's a mine lose
             if (board[row][column] == -1) {
                 loseCondition();
-                //if it's a safe space, open all other safe spaces
             } else if (board[row][column] == 0) {
                 revealSafeCells(row, column);
-                //else it must be danger
             } else {
                 int num = board[row][column];
                 dangerCondition(num, invClickEvent.getSlot());
             }
+
+            // Increment correctGuesses when a safe cell is correctly guessed
+            if (board[row][column] != -1) {
+                correctGuesses++;
+            }
+            checkWin();
         }
     }
 
-    private  void revealSafeCells(int row, int column) {
-        //goofy math that looks thru all adjacent squares
+    private void checkWin(){
+        if (correctGuesses == totalSafeCells) {
+            Clubmine_Trial.getPlugin().getLogger().info("Win found");
+            winCondition();
+        }
+    }
+
+    private void revealSafeCells(int row, int column) {
+        // Goofy math that looks through all adjacent squares
         for (int i = row - 1; i <= row + 1; i++) {
             for (int j = column - 1; j <= column + 1; j++) {
-                //if it's an existing cell
+                // If it's an existing cell
                 if (isValidCell(i, j) && !revealedBoard[i][j]) {
-                    //reveal it
+                    // Reveal it
                     revealedBoard[i][j] = true;
 
                     if (board[i][j] == 0) {
-                        //reveal the cell
+                        // If it's a safe cell, reveal the cell and increment correctGuesses
                         revealSafeCells(i, j);
                         int slotId = i * columns + j;
                         safeCell(slotId);
                         safeCell(invClickEvent.getSlot());
-                    } else {
-                        // Update the UI for cells with mine count >= 0
+                        correctGuesses++;
+                    } else if (board[i][j] >= 1) {
+                        // If it's a numbered cell, update the UI and increment correctGuesses
                         int slotId = i * columns + j;
-                        if (board[i][j] == -1) {
-                            minesweeperGui.setItem(slotId, new ActualMine());
-                        } else if (board[i][j] >= 1){
-                            dangerCondition(board[i][j], slotId);
-                        }
+                        dangerCondition(board[i][j], slotId);
+                        correctGuesses++;
                     }
                 }
             }
         }
+        checkWin(); // Check for a win after revealing safe cells
     }
+
 
     //when clicked, checks if it's next to a mine, if it is, make it a number cell
     private  void updateCellToNum(int row, int column){
@@ -145,12 +173,17 @@ public class MinesweeperGUI {
             }
         }
     }
+
     //checks if the cell is in the grid
-    private  boolean isValidCell(int row, int column){
+    private boolean isValidCell(int row, int column){
         return row >= 0 && row < rows && column >= 0 && column < columns;
     }
 
     public void clickedUnknownItem(ClickType clickType, Player player, InventoryClickEvent event){
+        if(clickAmount <= 0){
+            initBoard();
+            timerId = Bukkit.getScheduler().scheduleSyncRepeatingTask(Clubmine_Trial.getPlugin(), this::startTimer, 20, 20);
+        }
         invClickEvent = event;
         if(clickType.isLeftClick()){
             mineMath(event);
@@ -162,38 +195,41 @@ public class MinesweeperGUI {
     public void clickedGuessedMine(ClickType clickType, Player player, InventoryClickEvent event){
         minesweeperGui.setItem(event.getSlot(), new UnknownItem(this));
         minesGuessed--;
+        minesweeperGui.setItem(46, new MinesAmount(bombNum -minesGuessed));
     }
 
     private void mineMath(InventoryClickEvent event){
-        clickAmount++;
-
         //some goofy math to convert the 0-53 to column and rows
         int row = event.getSlot() / columns; // Calculate the row
         int column = event.getSlot() % columns; // Calculate the column
 
+        if(clickAmount <= 0){
+            initBoard();
+            placeBomb();
+        }
         handleCellClicked(row, column);
-    }
-
-    private  void loseCondition(){
-        clickAmount = 0;
-        minesweeperGui.closeForAllViewers();
-        MinesweeperLoseGUI.openLoss(minesweperPlayer);
+        clickAmount++;
     }
 
     private  void dangerCondition(int num, int slotId){
-        AdjecentMine.mineNum = num;
-        minesweeperGui.setItem(slotId, new AdjecentMine());
+        minesweeperGui.setItem(slotId, new AdjecentMine(num));
     }
 
     private  void safeCell(int slotId){
-        // slotId must be 0-53
+        // slotId must be 0-44
         minesweeperGui.setItem(slotId, new SafeCell());
     }
 
     private  void winCondition(){
-        minesweeperGui.closeForAllViewers();
-        clickAmount = 0;
-        MinesweeperVictoryGUI.openVictory(minesweperPlayer);
+        Bukkit.getScheduler().cancelTask(timerId);
+        replaceCells();
+        minesweeperWindow.changeTitle("You Won!");
+    }
+
+    private  void loseCondition(){
+        Bukkit.getScheduler().cancelTask(timerId);
+        replaceCells();
+        minesweeperWindow.changeTitle("You lost!");
     }
 
     private void setAsGuessedMine(InventoryClickEvent event){
@@ -202,5 +238,34 @@ public class MinesweeperGUI {
         }
         minesweeperGui.setItem(event.getSlot(), new GuessedMine(this));
         minesGuessed++;
+        minesweeperGui.setItem(46, new MinesAmount(bombNum - minesGuessed));
+    }
+
+    private void replaceCells() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                int slotId = i * columns + j;
+
+                if (board[i][j] == -1) {
+                    minesweeperGui.setItem(slotId, new ActualMine());
+                }else if(board[i][j] == 0){
+                    safeCell(slotId);
+                }else{
+                    dangerCondition(board[i][j], slotId);
+                }
+            }
+        }
+    }
+
+    public void startTimer(){
+        minesweeperGui.setItem(52, new TimerItem(timeTaken++));
+    }
+    public void resetGame(){
+        Bukkit.getScheduler().cancelTask(timerId);
+        timeTaken = 0;
+        minesGuessed = 0;
+        clickAmount = 0;
+        minesweeperGui.closeForAllViewers();
+        openMinesweeper(minesweperPlayer);
     }
 }

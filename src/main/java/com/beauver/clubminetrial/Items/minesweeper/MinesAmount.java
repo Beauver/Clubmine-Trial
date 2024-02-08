@@ -1,6 +1,5 @@
 package com.beauver.clubminetrial.Items.minesweeper;
 
-import com.beauver.clubminetrial.GUI.MinesweeperGUI;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -10,21 +9,25 @@ import xyz.xenondevs.invui.item.ItemProvider;
 import xyz.xenondevs.invui.item.builder.ItemBuilder;
 import xyz.xenondevs.invui.item.impl.AbstractItem;
 
-public class UnknownItem extends AbstractItem {
-    final MinesweeperGUI minesweeperGUI;
-    public UnknownItem(MinesweeperGUI minesweeperGui){
-        this.minesweeperGUI = minesweeperGui;
+public class MinesAmount extends AbstractItem {
+
+    final int minesAmount;
+    public MinesAmount(int minesAmountNum){
+        this.minesAmount = minesAmountNum;
     }
+
     @Override
     public ItemProvider getItemProvider() {
-        return new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE)
+        int minesAmountCounter = 0;
+        minesAmountCounter = (minesAmount == 0) ?  1 : minesAmount;
+        return new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
                 .setCustomModelData(1)
-                .setDisplayName("?");
+                .setDisplayName("Amount of mines: " + minesAmount)
+                .setAmount(minesAmountCounter);
     }
 
     @Override
     public void handleClick(@NotNull ClickType clickType, @NotNull Player player, @NotNull InventoryClickEvent event) {
-        minesweeperGUI.clickedUnknownItem(clickType, player, event);
-        notifyWindows();
+
     }
 }
