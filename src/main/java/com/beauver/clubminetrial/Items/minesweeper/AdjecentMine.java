@@ -16,9 +16,38 @@ public class AdjecentMine extends AbstractItem {
         this.mineNum = mineNum1;
     }
 
-
     public ItemProvider getItemProvider() {
-        return new ItemBuilder(Material.LIGHT_BLUE_STAINED_GLASS_PANE)
+        Material material = Material.LIGHT_BLUE_STAINED_GLASS_PANE;
+        /*
+        switch (mineNum){
+            case 1:
+                material = Material.LIGHT_BLUE_STAINED_GLASS_PANE;
+                break;
+            case 2:
+                material = Material.GREEN_STAINED_GLASS_PANE;
+                break;
+            case 3:
+                material = Material.PINK_STAINED_GLASS_PANE;
+                break;
+            case 4:
+                material = Material.BLUE_STAINED_GLASS_PANE;
+                break;
+            case 5:
+                material = Material.RED_STAINED_GLASS_PANE;
+                break;
+            case 6:
+                material = Material.CYAN_STAINED_GLASS_PANE;
+                break;
+            case 7:
+                material = Material.BLACK_STAINED_GLASS_PANE;
+                break;
+            case 8:
+                material = Material.GRAY_STAINED_GLASS_PANE;
+                break;
+        }
+        */
+
+        return new ItemBuilder(material)
                 .setCustomModelData(1)
                 .setDisplayName(String.valueOf(mineNum))
                 .setAmount(mineNum);

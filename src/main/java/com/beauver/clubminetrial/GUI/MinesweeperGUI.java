@@ -109,6 +109,7 @@ public class MinesweeperGUI {
                 loseCondition();
             } else if (board[row][column] == 0) {
                 revealSafeCells(row, column);
+                safeCell(invClickEvent.getSlot());
             } else {
                 int num = board[row][column];
                 dangerCondition(num, invClickEvent.getSlot());
@@ -123,8 +124,7 @@ public class MinesweeperGUI {
     }
 
     private void checkWin(){
-        if (correctGuesses == totalSafeCells) {
-            ClubmineTrial.getPlugin().getLogger().info("Win found");
+        if (correctGuesses >= totalSafeCells) {
             winCondition();
         }
     }
@@ -140,10 +140,9 @@ public class MinesweeperGUI {
 
                     if (board[i][j] == 0) {
                         // If it's a safe cell, reveal the cell and increment correctGuesses
-                        revealSafeCells(i, j);
                         int slotId = i * columns + j;
                         safeCell(slotId);
-                        safeCell(invClickEvent.getSlot());
+                        revealSafeCells(i, j);
                         correctGuesses++;
                     } else if (board[i][j] >= 1) {
                         // If it's a numbered cell, update the UI and increment correctGuesses

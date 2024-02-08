@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Clubmine-Trial.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Clubmine-Trial.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Clubmine-Trial.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Clubmine-Trial.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ClubmineTrial.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ClubmineTrial.main.iml" />
     </modules>
   </component>
 </project>
