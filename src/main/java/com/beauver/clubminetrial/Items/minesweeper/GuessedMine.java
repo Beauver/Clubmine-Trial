@@ -12,6 +12,10 @@ import xyz.xenondevs.invui.item.impl.AbstractItem;
 
 public class GuessedMine extends AbstractItem {
 
+    final MinesweeperGUI minesweeperGUI;
+    public GuessedMine(MinesweeperGUI minesweeperGui){
+        this.minesweeperGUI = minesweeperGui;
+    }
     public ItemProvider getItemProvider() {
         return new ItemBuilder(Material.RED_BANNER)
                 .setCustomModelData(1)
@@ -20,8 +24,7 @@ public class GuessedMine extends AbstractItem {
 
     @Override
     public void handleClick(@NotNull ClickType clickType, @NotNull Player player, @NotNull InventoryClickEvent event) {
-        MinesweeperGUI.minesweeperGui.setItem(event.getSlot(), new UnknownItem());
-        MinesweeperGUI.minesGuessed--;
+        minesweeperGUI.clickedGuessedMine(clickType, player, event);
         notifyWindows();
     }
 }
