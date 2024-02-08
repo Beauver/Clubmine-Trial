@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d733d825-7790-43d6-ab83-5e4c58dd31f5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/listeners/RecipeBookEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/ClubmineTrial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beauver/clubminetrial/ClubmineTrial.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +242,7 @@
       <workItem from="1707422722205" duration="8139000" />
       <workItem from="1707431777136" duration="1897000" />
       <workItem from="1707434583802" duration="51000" />
-      <workItem from="1707434949596" duration="311000" />
+      <workItem from="1707434949596" duration="410000" />
     </task>
     <servers />
   </component>
