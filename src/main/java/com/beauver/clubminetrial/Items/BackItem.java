@@ -15,10 +15,10 @@ public class BackItem extends PageItem {
     @Override
     public ItemProvider getItemProvider(PagedGui<?> gui) {
         ItemBuilder builder = new ItemBuilder(Material.RED_STAINED_GLASS_PANE);
-        builder.setDisplayName("§7Previous page")
+        builder.setDisplayName("Previous page")
                 .addLoreLines(gui.hasPreviousPage()
-                        ? "§7Go to page §e" + gui.getCurrentPage() + "§7/§e" + gui.getPageAmount()
-                        : "§cYou can't go further back");
+                        ? "Go to page " + gui.getCurrentPage() + gui.getPageAmount()
+                        : "You can't go further back");
 
         return builder;
     }
