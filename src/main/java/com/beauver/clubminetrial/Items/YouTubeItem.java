@@ -1,6 +1,6 @@
 package com.beauver.clubminetrial.Items;
 
-import com.beauver.clubminetrial.Clubmine_Trial;
+import com.beauver.clubminetrial.ClubmineTrial;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.TextColor;
@@ -15,6 +15,8 @@ import xyz.xenondevs.invui.item.impl.AbstractItem;
 
 public class YouTubeItem extends AbstractItem {
 
+    final String yt = ClubmineTrial.getPlugin().getConfig().getString("youtubeLink");
+
     @Override
     public ItemProvider getItemProvider() {
         return new ItemBuilder(Material.RED_DYE).setDisplayName("YouTube").setCustomModelData(1);
@@ -23,8 +25,7 @@ public class YouTubeItem extends AbstractItem {
     @Override
     public void handleClick(@NotNull ClickType clickType, @NotNull Player player, @NotNull InventoryClickEvent event) {
         event.getInventory().close();
-        Clubmine_Trial plugin = Clubmine_Trial.getPlugin();
-        event.getWhoClicked().sendMessage(Component.text("You can check out our youtube here:\n" + plugin.getConfig().getString("youtubeLink")).color(TextColor.fromHexString(plugin.getConfig().getString("textColorHex"))).clickEvent(ClickEvent.openUrl(plugin.getConfig().getString("youtubeLink"))));
+        event.getWhoClicked().sendRichMessage(String.format("<red>You can check out our YouTube here:<br><click:open_url:%1$s>%1$s</click></red>",yt));
     }
 
 }

@@ -28,7 +28,7 @@ dependencies {
 }
 
 shadowJar {
-    archiveBaseName.set('clubmine-trial-shadow')
+    archiveBaseName.set('clubminetrial-shadow')
     archiveVersion.set('1.0')
     relocate("xyz.xenondevs.invui", "com.beauver.clubminetrial.shade.invui")
 }

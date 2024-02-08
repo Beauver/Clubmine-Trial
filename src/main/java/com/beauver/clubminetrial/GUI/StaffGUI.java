@@ -1,12 +1,11 @@
 package com.beauver.clubminetrial.GUI;
 
-import com.beauver.clubminetrial.Clubmine_Trial;
+import com.beauver.clubminetrial.ClubmineTrial;
 import com.beauver.clubminetrial.Items.BackItem;
 import com.beauver.clubminetrial.Items.ForwardItem;
 import com.beauver.clubminetrial.Util.InventoryItems;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import xyz.xenondevs.invui.gui.Gui;
 import xyz.xenondevs.invui.gui.PagedGui;
 import xyz.xenondevs.invui.gui.structure.Markers;
@@ -18,15 +17,13 @@ import xyz.xenondevs.invui.window.Window;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class StaffGUI {
 
     public static void openStaffGUI(Player player) throws MojangApiUtils.MojangApiException, IOException {
 
-        List<?> rawList = Clubmine_Trial.getPlugin().getConfig().getList("staffMembers");
+        List<?> rawList = ClubmineTrial.getPlugin().getConfig().getList("staffMembers");
         List<Item> staffMembers = new ArrayList<>();
 
         if (rawList != null) {

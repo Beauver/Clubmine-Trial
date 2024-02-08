@@ -1,18 +1,13 @@
 package com.beauver.clubminetrial.GUI;
 
-import com.beauver.clubminetrial.Clubmine_Trial;
+import com.beauver.clubminetrial.ClubmineTrial;
 import com.beauver.clubminetrial.Items.minesweeper.*;
-import jdk.jshell.spi.ExecutionControl;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
 import xyz.xenondevs.invui.gui.Gui;
-import xyz.xenondevs.invui.item.Item;
 import xyz.xenondevs.invui.item.builder.ItemBuilder;
 import xyz.xenondevs.invui.item.impl.SimpleItem;
 import xyz.xenondevs.invui.window.Window;
@@ -34,8 +29,8 @@ public class MinesweeperGUI {
     private Window minesweeperWindow;
     private int timeTaken = 0;
     public int timerId;
-    private final int maxMines = Clubmine_Trial.getPlugin().getConfig().getInt("minesweeperMaxMines");
-    private final int minMines = Clubmine_Trial.getPlugin().getConfig().getInt("minesweeperMinMines");;
+    private final int maxMines = ClubmineTrial.getPlugin().getConfig().getInt("minesweeperMaxMines");
+    private final int minMines = ClubmineTrial.getPlugin().getConfig().getInt("minesweeperMinMines");;
     private int totalSafeCells;
     private int correctGuesses;
 
@@ -129,7 +124,7 @@ public class MinesweeperGUI {
 
     private void checkWin(){
         if (correctGuesses == totalSafeCells) {
-            Clubmine_Trial.getPlugin().getLogger().info("Win found");
+            ClubmineTrial.getPlugin().getLogger().info("Win found");
             winCondition();
         }
     }
@@ -182,7 +177,7 @@ public class MinesweeperGUI {
     public void clickedUnknownItem(ClickType clickType, Player player, InventoryClickEvent event){
         if(clickAmount <= 0){
             initBoard();
-            timerId = Bukkit.getScheduler().scheduleSyncRepeatingTask(Clubmine_Trial.getPlugin(), this::startTimer, 20, 20);
+            timerId = Bukkit.getScheduler().scheduleSyncRepeatingTask(ClubmineTrial.getPlugin(), this::startTimer, 20, 20);
         }
         invClickEvent = event;
         if(clickType.isLeftClick()){

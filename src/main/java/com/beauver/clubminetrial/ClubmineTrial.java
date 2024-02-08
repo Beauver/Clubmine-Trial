@@ -9,10 +9,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Clubmine_Trial extends JavaPlugin {
+public final class ClubmineTrial extends JavaPlugin {
 
-    private static Clubmine_Trial plugin;
-    public static Clubmine_Trial getPlugin() {
+    private static ClubmineTrial plugin;
+    public static ClubmineTrial getPlugin() {
         return plugin;
     }
     public static int fillInvCraftSlotsSchedularID;

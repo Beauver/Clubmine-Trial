@@ -18,7 +18,7 @@ public class ForwardItem extends PageItem {
         builder.setDisplayName("§7Next page")
                 .addLoreLines(gui.hasNextPage()
                         ? "§7Go to page §e" + (gui.getCurrentPage() + 2) + "§7/§e" + gui.getPageAmount()
-                        : "§cThere are no more pages");
+                        : "&cThere are no more pages");
 
         return builder;
     }

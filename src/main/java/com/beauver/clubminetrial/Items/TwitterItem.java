@@ -1,6 +1,6 @@
 package com.beauver.clubminetrial.Items;
 
-import com.beauver.clubminetrial.Clubmine_Trial;
+import com.beauver.clubminetrial.ClubmineTrial;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.TextColor;
@@ -15,6 +15,8 @@ import xyz.xenondevs.invui.item.impl.AbstractItem;
 
 public class TwitterItem extends AbstractItem {
 
+
+    final String twitter = ClubmineTrial.getPlugin().getConfig().getString("twitterLink");
     @Override
     public ItemProvider getItemProvider() {
         return new ItemBuilder(Material.BLACK_DYE).setDisplayName("Twitter (X)").setCustomModelData(1);
@@ -23,8 +25,7 @@ public class TwitterItem extends AbstractItem {
     @Override
     public void handleClick(@NotNull ClickType clickType, @NotNull Player player, @NotNull InventoryClickEvent event) {
         event.getInventory().close();
-        Clubmine_Trial plugin = Clubmine_Trial.getPlugin();
-        event.getWhoClicked().sendMessage(Component.text("You can check out our twitter here:\n" + plugin.getConfig().getString("twitterLink")).color(TextColor.fromHexString(plugin.getConfig().getString("textColorHex"))).clickEvent(ClickEvent.openUrl(plugin.getConfig().getString("twitterLink"))));
+        event.getWhoClicked().sendRichMessage(String.format("<blue>You can check out our twitter here:<br><click:open_url:%1$s>%1$s</click></blue>",twitter));
     }
 
 }

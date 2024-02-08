@@ -1,9 +1,6 @@
 package com.beauver.clubminetrial.Items;
 
-import com.beauver.clubminetrial.Clubmine_Trial;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
-import net.kyori.adventure.text.format.TextColor;
+import com.beauver.clubminetrial.ClubmineTrial;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -15,6 +12,8 @@ import xyz.xenondevs.invui.item.impl.AbstractItem;
 
 public class DiscordItem extends AbstractItem {
 
+    private final String discordInvite = ClubmineTrial.getPlugin().getConfig().getString("discordInviteCode");
+
     @Override
     public ItemProvider getItemProvider() {
         return new ItemBuilder(Material.LIGHT_BLUE_DYE).setDisplayName("Discord").setCustomModelData(1);
@@ -23,7 +22,7 @@ public class DiscordItem extends AbstractItem {
     @Override
     public void handleClick(@NotNull ClickType clickType, @NotNull Player player, @NotNull InventoryClickEvent event) {
         event.getInventory().close();
-        Clubmine_Trial plugin = Clubmine_Trial.getPlugin();
-        event.getWhoClicked().sendMessage(Component.text("Join our discord server here:\nhttps://discord.com/invite/" + plugin.getConfig().getString("discordInviteCode")).color(TextColor.fromHexString(plugin.getConfig().getString("textColorHex"))).clickEvent(ClickEvent.openUrl("https://discord.com/invite/" + plugin.getConfig().getString("discordInviteCode"))));
+        //minimessage
+        event.getWhoClicked().sendRichMessage(String.format("<blue>Join our discord server here:<br><click:open_url:%1$s>%1$s</click></blue>",discordInvite));
     }
 }

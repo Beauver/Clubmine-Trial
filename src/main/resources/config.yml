@@ -1,7 +1,7 @@
-discordInviteCode: "placeholder" # Discord invite code (the part after https://discord.com/invite/)
+discordInviteCode: "https://discord.com/invite/placeholder" # Discord invite code (the part after https://discord.com/invite/)
 youtubeLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" #Link to clubmine's youtube channel
-storeLink: "https://store.clubmine.net/" #Link to clubmine's store
-twitterLink: "https://example.com/" #link to clubmine's twitter
+storeLink: "https://store.clubmine.net" #Link to clubmine's store
+twitterLink: "https://example.com" #link to clubmine's twitter
 textColorHex: "#3544e6" #Replace with whatever HEX Color code you wish
 craftingSlotsCustomModelId: 1 #This must be the customModelId of the survival inventory crafting slots, if this is set incorrectly, players will be able to grab the items.
 minesweeperMinMines: 6

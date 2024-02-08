@@ -1,6 +1,6 @@
-name: Clubmine-Trial
+name: ClubmineTrial
 version: '${version}'
-main: com.beauver.clubminetrial.Clubmine_Trial
+main: com.beauver.clubminetrial.ClubmineTrial
 api-version: '1.20'
 prefix: com.beauver.trial-clubmine
 authors: [ Beauver ]
