@@ -3,6 +3,7 @@ package com.beauver.clubminetrial;
 import com.beauver.clubminetrial.listeners.InventoryClose;
 import com.beauver.clubminetrial.Util.InventoryItems;
 import com.beauver.clubminetrial.listeners.ItemSpawnEvent;
+import com.beauver.clubminetrial.listeners.RecipeBookEvent;
 import com.beauver.clubminetrial.listeners.SurvivalInventoryListener;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -35,6 +36,7 @@ public final class ClubmineTrial extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SurvivalInventoryListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryClose(), this);
         getServer().getPluginManager().registerEvents(new ItemSpawnEvent(), this);
+        getServer().getPluginManager().registerEvents(new RecipeBookEvent(), this);
 
         getLogger().info("Listeners started.");
     }
